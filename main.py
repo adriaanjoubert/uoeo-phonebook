@@ -56,7 +56,10 @@ class PhoneBook:
             new_entries = self.entries[:index]
             if index < self.length:
                 new_entries += self.entries[index + 1:]
+                for entry in new_entries[index:]:
+                    self.index[entry.id] -= 1
             self.entries = new_entries
+            del self.index[id_]
             return True
         except KeyError:
             # Entry with that ID not found.

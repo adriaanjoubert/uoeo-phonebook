@@ -38,6 +38,13 @@ class TestDelete(TestCase):
                 entry_3,
             ],
         )
+        self.assertDictEqual(
+            d1=phone_book.index,
+            d2={
+                entry_2.id: 0,
+                entry_3.id: 1,
+            },
+        )
 
     def test_new_phone_book_delete_middle_entry(self) -> None:
         phone_book = PhoneBook()
@@ -55,6 +62,13 @@ class TestDelete(TestCase):
                 entry_3,
             ],
         )
+        self.assertDictEqual(
+            d1=phone_book.index,
+            d2={
+                entry_1.id: 0,
+                entry_3.id: 1,
+            },
+        )
 
     def test_new_phone_book_delete_last_entry(self) -> None:
         phone_book = PhoneBook()
@@ -71,4 +85,11 @@ class TestDelete(TestCase):
                 entry_1,
                 entry_2,
             ],
+        )
+        self.assertDictEqual(
+            d1=phone_book.index,
+            d2={
+                entry_1.id: 0,
+                entry_2.id: 1,
+            },
         )
