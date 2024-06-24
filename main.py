@@ -25,7 +25,7 @@ class PhoneBook:
     def __init__(self) -> None:
         self.entries: list[Entry] = []
         self.entry_id = self.generate_id()
-        self.index = {}
+        self.index: dict[int, int] = {}
         self.length = 0
 
     def __str__(self) -> str:
