@@ -115,3 +115,34 @@ class QuicksortTestCase(TestCase):
                 entry_2,
             ],
         )
+
+    def test_dirty(self) -> None:
+        phone_book = PhoneBook()
+        entry_1 = Entry(name='A', phone_number='+1')
+        phone_book.insert(entry=entry_1)
+        entry_2 = Entry(name='C', phone_number='+1')
+        phone_book.insert(entry=entry_2)
+        entry_3 = Entry(name='B', phone_number='+1')
+        phone_book.insert(entry=entry_3)
+        entry_4 = Entry(name='D', phone_number='+1')
+        phone_book.insert(entry=entry_4)
+        self.assertListEqual(
+            list1=phone_book.entries,
+            list2=[
+                entry_1,
+                entry_2,
+                entry_3,
+                entry_4,
+            ],
+        )
+
+        phone_book.delete(id_=1)
+        phone_book.sort()
+        self.assertListEqual(
+            list1=phone_book.entries,
+            list2=[
+                entry_3,
+                entry_2,
+                entry_4,
+            ],
+        )

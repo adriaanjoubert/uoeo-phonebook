@@ -61,6 +61,7 @@ class PhoneBook:
                     self.index[entry.id] -= 1
             self.entries = new_entries
             del self.index[id_]
+            self.length -= 1
             return True
         except KeyError:
             # Entry with that ID not found.
