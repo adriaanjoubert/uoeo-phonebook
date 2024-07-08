@@ -1,7 +1,7 @@
 COMMANDS = """
 1. Add a new entry
 2. Print all entries
-3. Search for an entry
+3. Search for an entry by ID
 4. Sort entire phonebook by name
 5. Delete entry by ID
 6. Exit
@@ -68,10 +68,10 @@ class PhoneBook:
             return False
 
     def sort(self) -> None:
-        quicksort(entries=self.entries, left=0, right=self.length - 1)
+        quicksort(entries=self.entries, left=0, right=self.length - 1, index=self.index)
 
 
-def quicksort(entries: list[Entry], left: int, right: int) -> None:
+def quicksort(entries: list[Entry], left: int, right: int, index: dict[int, int]) -> None:
     """
     From Sedgewick (1992). Algorithmen in C++. Bonn: Addison-Wesley.
     """
@@ -94,8 +94,11 @@ def quicksort(entries: list[Entry], left: int, right: int) -> None:
         if i >= j:
             break
         entries[i], entries[j] = entries[j], entries[i]
-    quicksort(entries, left, i - 1)
-    quicksort(entries, i + 1, right)
+
+        # We need to update the index to reflect the new positions of the entries.
+        index[entries[i].id], index[entries[j].id] = index[entries[j].id], index[entries[i].id]
+    quicksort(entries=entries, left=left, right=i - 1, index=index)
+    quicksort(entries=entries, left=i + 1, right=right, index=index)
 
 
 def main() -> None:
@@ -116,8 +119,20 @@ def main() -> None:
                 print()
                 print(phone_book)
             case '3':
-                # Search for an entry
-                pass
+                # Search for an entry by ID
+                id_ = input("\nEnter ID: ")
+                try:
+                    id_ = int(id_)
+                except ValueError:
+                    print("\nInvalid ID: ", id_)
+                    continue
+                try:
+                    index = phone_book.index[id_]
+                except KeyError:
+                    print("\nEntry not found")
+                    continue
+                print()
+                print(phone_book.entries[index])
             case '4':
                 # Sort phonebook
                 phone_book.sort()
