@@ -11,7 +11,7 @@ Installation instructions are documented for Linux, MacOS, and Microsoft Windows
 # Create the virtual environment
 1. Install pipenv:
 ```bash
-``~/.pyenv/versions/3.12.4/bin/python -m install pipenv
+~/.pyenv/versions/3.12.4/bin/python -m install pipenv
 ```
 2. Clone the repository:
 ```bash
