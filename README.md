@@ -50,7 +50,30 @@ jupyter notebook
 python main.py
 ```
 
+```python
+from main import main
+
+
+main()
+```
+
 # Run unit tests
 ```bash
 python -m unittest
 ```
+
+# Using the program
+The program is implemented as a read-eval-print-loop (REPL). There is a main menu with 6 options:
+1. Add a new entry
+2. Print all entries
+3. Search for an entry by ID
+4. Sort entire phonebook by name
+5. Delete entry by ID
+6. Exit
+
+After each operation, the main menu is displayed again. You can exit the program by selecting option 6.
+
+Insertion is implemented by appending entries to the list of entries. Deletion is implemented by concatenating the
+slices of entries before and after the entry to be deleted to form a new list of entries. Searching is implemented by
+maintaining a hash table of IDs to indices in the list of entries. Sorting is implemented using the Quicksort algorithm
+developed by Hoare (1960) as implemented by Sedgewick (1992). Please refer to the PDF for the full reference list.
