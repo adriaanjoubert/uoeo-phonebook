@@ -140,7 +140,15 @@ def main() -> None:
                 print(phone_book)
             case '5':
                 # Delete entry by ID
-                pass
+                id_ = input("\nEnter ID: ")
+                try:
+                    id_ = int(id_)
+                except ValueError:
+                    print("\nInvalid ID: ", id_)
+                    continue
+                phone_book.delete(id_)
+                print()
+                print(phone_book)
             case '6':
                 # Exit
                 break
