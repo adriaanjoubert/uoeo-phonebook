@@ -31,10 +31,21 @@ cd uoeo-phonebook
 ```
 6. Install the Python dependencies:
 ```bash
-~/.pyenv/versions/3.12.4/bin/pipenv install
+pip install pipenv
+pipenv install
 ```
 
-# Run the program
+# Run the Jupyter Notebook
+## Start the Jupyter Notebook
+```bash
+jupyter notebook
+```
+
+## Open the Jupyter Notebook
+1. Open your browser and navigate to `http://localhost:8888` (if it didn't automatically open).
+2. Open the file `Notebook.ipynb` to load and interact with the program.
+
+# Run the program in the command line
 ```bash
 python main.py
 ```
