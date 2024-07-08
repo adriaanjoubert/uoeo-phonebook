@@ -76,5 +76,5 @@ After each operation, the main menu is displayed again. You can exit the program
 Insertion is implemented by appending entries to the list of entries. Deletion is implemented by concatenating the
 slices of entries before and after the entry to be deleted to form a new list of entries. Searching is implemented by
 maintaining a hash table of IDs to indices in the list of entries. The hash table is updated during the insertion,
-deletion, and sorting operations. Sorting is implemented using the Quicksort algorithm developed by Hoare (1960) as
+deletion, and sorting operations. Sorting is implemented using the Quicksort algorithm developed by Hoare (1961) as
 implemented by Sedgewick (1992). Please refer to the PDF for the full reference list.
