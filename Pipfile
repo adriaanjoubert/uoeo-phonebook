@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 pipenv = "*"
+notebook = "*"
+jupyterlab = "*"
 
 [dev-packages]
 

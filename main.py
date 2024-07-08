@@ -4,6 +4,7 @@ COMMANDS = """
 3. Search for an entry
 4. Sort entire phonebook by name
 5. Delete entry by ID
+6. Exit
 """
 
 
@@ -66,7 +67,34 @@ class PhoneBook:
             return False
 
     def sort(self) -> None:
-        pass
+        quicksort(entries=self.entries, left=0, right=self.length - 1)
+
+
+def quicksort(entries: list[Entry], left: int, right: int) -> None:
+    """
+    From Sedgewick (1992). Algorithmen in C++. Bonn: Addison-Wesley.
+    """
+    if right <= left:
+        return
+    pivot = entries[right]
+    i = left
+    j = right
+    while True:
+        while True:
+            if entries[i].name < pivot.name:
+                i += 1
+            else:
+                break
+        while True:
+            if entries[j].name > pivot.name:
+                j -= 1
+            else:
+                break
+        if i >= j:
+            break
+        entries[i], entries[j] = entries[j], entries[i]
+    quicksort(entries, left, i - 1)
+    quicksort(entries, i + 1, right)
 
 
 def main() -> None:
@@ -74,26 +102,32 @@ def main() -> None:
 
     while True:
         print(COMMANDS)
-        match input("Enter command (1-10): "):
+        match input("Enter command (1-6): "):
             case '1':
                 # Add entry
-                name = input("Name: ")
+                name = input("\nName: ")
                 phone_number = input("Phone number: ")
                 entry = Entry(name=name, phone_number=phone_number)
                 phone_book.insert(entry=entry)
                 print(f"\nEntry added: {entry}")
             case '2':
                 # Print all entries
+                print()
                 print(phone_book)
             case '3':
                 # Search for an entry
                 pass
             case '4':
                 # Sort phonebook
-                pass
+                phone_book.sort()
+                print()
+                print(phone_book)
             case '5':
                 # Delete entry by ID
                 pass
+            case '6':
+                # Exit
+                break
             case _:
                 print("\nInvalid command")
 

@@ -3,7 +3,7 @@ from unittest import TestCase
 from main import Entry, PhoneBook
 
 
-class TestInsert(TestCase):
+class InsertTestCase(TestCase):
 
     def test_new_phone_book(self) -> None:
         phone_book = PhoneBook()
@@ -20,7 +20,7 @@ class TestInsert(TestCase):
         )
 
 
-class TestDelete(TestCase):
+class DeleteTestCase(TestCase):
 
     def test_new_phone_book_delete_first_entry(self) -> None:
         phone_book = PhoneBook()
